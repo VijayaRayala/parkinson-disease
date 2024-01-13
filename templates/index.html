@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classification</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Image Classification</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <form method="POST" enctype="multipart/form-data" class="mb-3">
+                    <div class="form-group">
+                        <label for="image">Select an image:</label>
+                        <input type="file" name="image" id="image" accept="image/*" class="form-control-file" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prediction_option">Select prediction option:</label>
+                        <select name="prediction_option" id="prediction_option" class="form-control">
+                            <option value="spiral">Spiral</option>
+                            <option value="wave">Wave</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Predict</button>
+                </form>
+
+                {% if prediction %}
+                <div class="alert alert-success">
+                    <h4>Prediction:</h4>
+                    <p><strong>Label:</strong> {{ prediction }}</p>
+                    <p><strong>Confidence:</strong> {{ probability }}</p>
+                </div>
+                {% endif %}
+
+                {% if error %}
+                <div class="alert alert-danger">
+                    <h4>Error:</h4>
+                    <p>{{ error }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
